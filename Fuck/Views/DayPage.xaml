@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.DayPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:RucSu.Models;assembly=RucSu"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    xmlns:viewmodels="clr-namespace:Fuck.ViewModels"
+    x:DataType="viewmodels:DayViewModel">
+    <ContentPage.Resources />
+    <Grid RowDefinitions="auto,*,auto,auto">
+        <Grid ColumnDefinitions="auto, *,auto">
+            <ImageButton Command="{Binding ToHubPageCommand, Mode=OneTime}" Source="home.png" />
+            <Label
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Title, Mode=OneWay}"
+                TextColor="#ff5a5f" />
+            <ImageButton
+                Grid.Column="2"
+                Command="{Binding ToCopyCommand, Mode=OneTime}"
+                Source="copy.png" />
+        </Grid>
+        <CollectionView
+            Grid.Row="1"
+            Margin="10"
+            ItemsSource="{Binding Lessons, Mode=OneWay}"
+            SelectionChangedCommand="{Binding SelectLessonCommand, Mode=OneTime}"
+            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem, Mode=OneWay}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Lesson">
+                    <Label Padding="5" Text="{Binding Mode=OneWay}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{x:Static strings:AppResources.NoLessons}"
+                    TextColor="{AppThemeBinding Light={StaticResource Tertiary},
+                                                Dark={StaticResource TertiaryDark}}"
+                    VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+        <Label
+            Grid.Row="2"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Message, Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Tertiary},
+                                        Dark={StaticResource TertiaryDark}}" />
+        <Grid
+            Grid.Row="3"
+            ColumnDefinitions="*,*"
+            RowDefinitions="*,*">
+            <Button
+                Margin="1"
+                Command="{Binding ShiftCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Backward}">
+                <Button.CommandParameter>
+                    <x:Int32>-1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Column="1"
+                Margin="1"
+                Command="{Binding ShiftCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Forward}">
+                <Button.CommandParameter>
+                    <x:Int32>1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="1,0,1,1"
+                Command="{Binding BackToWeekCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Week}" />
+        </Grid>
+    </Grid>
+</ContentPage>

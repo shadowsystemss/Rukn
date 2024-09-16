@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.WeekPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Fuck.ViewModels"
+    xmlns:models="clr-namespace:Fuck.Models"
+    xmlns:rucsuModels="clr-namespace:RucSu.Models;assembly=RucSu"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    x:Name="Page"
+    Title="WeekPage"
+    x:DataType="local:WeekViewModel">
+    <Grid RowDefinitions="*,auto">
+        <CollectionView
+            ItemsSource="{Binding Days, Mode=OneWay}"
+            SelectionChangedCommand="{Binding SelectDayCommand, Mode=OneTime}"
+            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem, Mode=OneWay}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PrettyDay">
+                    <Border Stroke="#071e22">
+                        <VerticalStackLayout>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Title, Mode=OneWay}"
+                                TextColor="#ff5a5f" />
+                            <Label Text="{Binding Mode=OneWay}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="*,*"
+            RowDefinitions="*,*">
+            <Button
+                Margin="1"
+                Command="{Binding ShiftCommand}"
+                Text="{x:Static strings:AppResources.Backward}">
+                <Button.CommandParameter>
+                    <x:Int32>-1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Column="1"
+                Margin="1"
+                Command="{Binding ShiftCommand}"
+                Text="{x:Static strings:AppResources.Forward}">
+                <Button.CommandParameter>
+                    <x:Int32>1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Command="{Binding ToHubPageCommand}"
+                Text="{x:Static strings:AppResources.Hub}" />
+        </Grid>
+    </Grid>
+</ContentPage>

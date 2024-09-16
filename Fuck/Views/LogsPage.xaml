@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.LogsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Fuck.Models"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    xmlns:viewModels="clr-namespace:Fuck.ViewModels"
+    Title="LogsPage"
+    x:DataType="viewModels:LogsViewModel">
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="auto,*,auto">
+            <DatePicker Date="{Binding First, Mode=OneWayToSource}" Format="dd-MM-yyyy" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding LoadCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Load}" />
+            <DatePicker
+                Grid.Column="2"
+                Date="{Binding Second, Mode=OneWayToSource}"
+                Format="dd-MM-yyyy" />
+        </Grid>
+        <ScrollView HorizontalScrollBarVisibility="Never">
+            <CollectionView ItemsSource="{Binding Logs}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FuckLog">
+                        <HorizontalStackLayout Spacing="2">
+                            <Label Text="{Binding Date}" />
+                            <Label Text="{Binding Level}" />
+                            <Label Text="{Binding Message}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Button Command="{Binding ToHubPageCommand, Mode=OneTime}" Text="{x:Static strings:AppResources.ComeBack}" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.LessonPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    xmlns:viewModels="clr-namespace:Fuck.ViewModels"
+    Title="LessonPage"
+    x:DataType="viewModels:LessonViewModel">
+    <Grid RowDefinitions="*,auto,auto">
+        <VerticalStackLayout Margin="5" Padding="10">
+            <Label
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="{Binding Title, Mode=OneWay}"
+                TextColor="#ff5a5f" />
+            <Label Text="{Binding Lesson, Mode=OneWay}" />
+        </VerticalStackLayout>
+        <Label
+            Grid.Row="1"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Message, Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Tertiary},
+                                        Dark={StaticResource TertiaryDark}}" />
+        <Grid
+            Grid.Row="2"
+            ColumnDefinitions="*,*"
+            RowDefinitions="*,*,*">
+            <Button
+                Margin="1"
+                Command="{Binding ShiftCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Previous}">
+                <Button.CommandParameter>
+                    <x:Int32>-1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Column="1"
+                Margin="1"
+                Command="{Binding ShiftCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Next}">
+                <Button.CommandParameter>
+                    <x:Int32>1</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Row="1"
+                Margin="1"
+                Command="{Binding FindNextCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.FindPrevious}">
+                <Button.CommandParameter>
+                    <x:Boolean>True</x:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="1"
+                Command="{Binding FindNextCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.FindNext}">
+                <Button.CommandParameter>
+                    <x:Boolean>False</x:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Command="{Binding BackToDayCommand, Mode=OneTime}"
+                Text="{x:Static strings:AppResources.Backward}" />
+        </Grid>
+    </Grid>
+</ContentPage>

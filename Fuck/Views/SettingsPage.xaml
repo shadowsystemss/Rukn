@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    xmlns:viewmodels="clr-namespace:Fuck.ViewModels"
+    Title="SettingsPage"
+    x:DataType="viewmodels:SettingsViewModel">
+    <VerticalStackLayout>
+        <Label
+            Margin="0,0,0,10"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Text="Welcome to Settings!"
+            TextColor="#ff5a5f"
+            VerticalOptions="Center" />
+        <Label Text="{x:Static strings:AppResources.Token}" />
+        <Label Text="{Binding UID, Mode=OneWay}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CopyUIDCommand, Mode=OneTime}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Button Command="{Binding ToBackCommand, Mode=OneTime}" Text="{x:Static strings:AppResources.ComeBack}" />
+        <Border Content="{Binding Profile, Mode=OneTime}" />
+    </VerticalStackLayout>
+</ContentPage>

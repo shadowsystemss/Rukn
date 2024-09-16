@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    xmlns:viewmodels="clr-namespace:Fuck.ViewModels"
+    Title="AboutPage"
+    x:DataType="viewmodels:AboutViewModel">
+    <Grid RowDefinitions="auto, *,auto,auto">
+        <Picker ItemsSource="{Binding Docs, Mode=OneTime}" SelectedItem="{Binding Document}" />
+        <ScrollView
+            Grid.Row="1"
+            Background="#111111"
+            Orientation="Vertical">
+            <Label Text="{Binding Text, Mode=OneWay}" TextColor="WhiteSmoke" />
+        </ScrollView>
+        <HorizontalStackLayout Grid.Row="2">
+            <CheckBox IsChecked="{Binding DontShowAnymore}" />
+            <Label Text="{x:Static strings:AppResources.DontShowAnymore}" VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <Button
+            Grid.Row="3"
+            Command="{Binding CloseCommand, Mode=OneTime}"
+            Text="{x:Static strings:AppResources.Close}" />
+    </Grid>
+</ContentPage>

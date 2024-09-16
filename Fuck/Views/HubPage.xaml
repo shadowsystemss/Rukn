@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Fuck.Views.HubPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Fuck.ViewModels"
+    xmlns:strings="clr-namespace:Fuck.Resources.Strings"
+    Title="HubPage"
+    x:DataType="local:HubViewModel">
+    <VerticalStackLayout Spacing="5">
+        <Label
+            Margin="0,10,0,0"
+            FontSize="14"
+            HorizontalTextAlignment="Center"
+            Text="{x:Static strings:AppResources.Banner}"
+            TextColor="#02F1AA">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ActionCommand, Mode=OneTime}" CommandParameter="banner" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label
+            Grid.Row="1"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Message, Mode=OneWay}"
+            TextColor="{AppThemeBinding Light={StaticResource Tertiary},
+                                        Dark={StaticResource TertiaryDark}}" />
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="today"
+            Text="{x:Static strings:AppResources.Today}" />
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="day"
+            Text="{x:Static strings:AppResources.Day}" />
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="week"
+            Text="{x:Static strings:AppResources.Week}" />
+
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="about"
+            Text="{x:Static strings:AppResources.About}" />
+
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="logs"
+            Text="Logs" />
+
+        <HorizontalStackLayout Spacing="5">
+            <Label Text="{x:Static strings:AppResources.SelectDate}" VerticalOptions="Center" />
+            <DatePicker Date="{Binding Date, Mode=OneWayToSource}" Format="dd-MM-yyyy" />
+        </HorizontalStackLayout>
+
+        <Button
+            Command="{Binding ActionCommand, Mode=OneTime}"
+            CommandParameter="settings"
+            Text="{x:Static strings:AppResources.Settings}" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using Fuck.Models;
 using Fuck.Services.Logging;
 using Fuck.Views;
-using RucSu.Services;
 
 namespace Fuck.ViewModels
 {

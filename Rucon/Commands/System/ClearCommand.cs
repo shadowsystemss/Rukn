@@ -1,6 +1,4 @@
-﻿using CommandSystem;
-
-namespace Rucon.Commands.System
+﻿namespace Rucon.Commands.System
 {
     public class ClearCommand : ICommand
     {

@@ -53,20 +53,20 @@ namespace Fuck
 
                 .AddSingleton<HubViewModel>()
                 .AddSingleton<HubPage>()
-                
+
                 .AddSingleton<AboutViewModel>()
                 .AddSingleton<AboutPage>()
-                
+
                 .AddSingleton<SettingsViewModel>()
                 .AddSingleton<SettingsPage>()
                 .AddSingleton<ProfileView>()
-                
+
                 .AddSingleton<LogsViewModel>()
                 .AddSingleton<LogsPage>()
-                
+
                 .AddSingleton<WeekViewModel>()
                 .AddSingleton<WeekPage>()
-                
+
                 .AddSingleton<DayViewModel>()
                 .AddSingleton<DayPage>()
 

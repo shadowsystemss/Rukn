@@ -4,7 +4,6 @@ using Fuck.Models;
 using Fuck.Resources.Strings;
 using Fuck.Views;
 using RucSu.Models;
-using RucSu.Services;
 
 namespace Fuck.ViewModels
 {

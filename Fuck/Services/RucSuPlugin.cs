@@ -1,8 +1,6 @@
 ﻿using Fuck.Services.Logging;
 using Fuck.ViewModels;
 using Fuck.Views;
-using RucSu.Builders;
-using RucSu.Models;
 using RucSu.Services;
 
 namespace Fuck.Services

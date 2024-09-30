@@ -1,4 +1,4 @@
-﻿namespace Rukn.Data
+﻿namespace Rukn.Data.Interfaces
 {
     public interface IPosition
     {

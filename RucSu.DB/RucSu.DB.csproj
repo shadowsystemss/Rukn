@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RucSu\RucSu.csproj" />
+    <ProjectReference Include="..\Rukn.Data\Rukn.Data.csproj" />
   </ItemGroup>
 
 </Project>

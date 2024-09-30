@@ -1,11 +1,12 @@
 ﻿
+using Rukn.Data.Interfaces;
+using Rukn.Data.Models;
+
 namespace Rukn.Data.Pretty
 {
-    public class PrettyPosition(IPosition position) : IPosition
+    public record PrettyPosition(string Room, string Type) : Position(PrettyRoom(Room), PrettyType(Type))
     {
-        public string Room => PrettyRoom(position.Room);
-
-        public string Type => PrettyType(position.Type);
+        public PrettyPosition(IPosition position) : this(position.Room, position.Type) { }
 
         private static string PrettyRoom(string room) => room
             .ToLower()

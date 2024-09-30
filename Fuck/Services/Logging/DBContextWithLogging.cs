@@ -1,7 +1,5 @@
 ﻿using Fuck.Models;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
-using RucSu.Services;
 
 namespace Fuck.Services.Logging
 {

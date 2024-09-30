@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using RucSu.Services;
 using System.Collections.Concurrent;
 
 namespace Fuck.Services.Logging

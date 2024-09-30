@@ -1,6 +1,3 @@
-using RucSu.Models;
-using RucSu.Services;
-
 namespace Fuck.Views;
 
 public class ProfileView : ContentView

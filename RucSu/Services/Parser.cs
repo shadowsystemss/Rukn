@@ -91,14 +91,14 @@ public static partial class Parser
         return schedule;
     }
 
-    public static Dictionary<string, Dictionary<string, string>> ParseSelects(string html)
+    public static Dictionary<string, Dictionary<string, string>?> ParseSelects(string html)
     {
         MatchCollection matches = _selectRegex.Matches(html);
-        var result = new Dictionary<string, Dictionary<string, string>>();
+        var result = new Dictionary<string, Dictionary<string, string>?>();
 
         foreach (Match match in matches.Cast<Match>())
         {
-            var select = new Dictionary<string, string>();
+            Dictionary<string, string>? select = null;
             MatchCollection selectMatches = _valuesRegex.Matches(match.Groups[2].Value);
 
             foreach (Match selectMatch in selectMatches.Cast<Match>())
@@ -107,10 +107,11 @@ public static partial class Parser
                     string key = selectMatch.Groups[2].Value;
 
                     // Иногда имена преподавателей повторяются.
+                    select ??= [];
                     if (select.ContainsKey(key))
                     {
                         int n = 0;
-                        while (select.ContainsKey(key + n)) n++;
+                        while (select.ContainsKey($"{key} {n}")) n++;
                         key += n;
                     }
 
@@ -121,7 +122,7 @@ public static partial class Parser
 
         return result;
     }
-    
+
     [GeneratedRegex("bold\">\\s+(.*?)\\s\\(.*?</div>\\s+</div>", RegexOptions.Compiled | RegexOptions.Singleline)]
     private static partial Regex DayTemplateRegex();
     [GeneratedRegex("([0-5])\\. (.*?)<.*?/>\\s+(.*?)<br/>\\s+(.*?),\\s+(.*?)<", RegexOptions.Compiled | RegexOptions.Singleline)]

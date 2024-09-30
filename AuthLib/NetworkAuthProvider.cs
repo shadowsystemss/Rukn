@@ -9,7 +9,8 @@
                 string data = await httpClient.GetStringAsync(url, cancel);
                 return data.Split('\n').Contains(UID);
             }
-            catch{
+            catch
+            {
                 return false;
             }
         }

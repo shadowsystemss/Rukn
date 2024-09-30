@@ -1,14 +1,14 @@
-﻿namespace RucSu.DB.Models
-{
-    public class Profile
-    {
-        public bool EmployeeMode { get; set; }
-        public string? Branch { get; set; }
-        public string? Employee { get; set; }
-        public string? Year { get; set; }
-        public string? Group { get; set; }
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-        public string Parameters => $"branch={Branch}"
-            + (EmployeeMode ? $"&employee={Employee}" : $"&year={Year}&group={Group}");
+namespace RucSu.DB.Models
+{
+    public class Profile : RucSu.Models.Profile
+    {
+        public string Branch { get; set; }
+        public string 
     }
 }

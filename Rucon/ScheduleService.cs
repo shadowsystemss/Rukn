@@ -1,6 +1,4 @@
-﻿using RucSu;
-
-namespace RucDB;
+﻿namespace RucDB;
 
 public class ScheduleService
 {

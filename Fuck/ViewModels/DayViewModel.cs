@@ -6,7 +6,6 @@ using Fuck.Services;
 using Fuck.Views;
 using Microsoft.Extensions.Logging;
 using RucSu.Models;
-using RucSu.Services;
 
 namespace Fuck.ViewModels
 {

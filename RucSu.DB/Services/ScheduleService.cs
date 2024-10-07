@@ -17,7 +17,7 @@ namespace RucSu.DB.Services
                 lessons = db.FindLessons($"JOIN groups ON id = lessonId WHERE date = '{date:yyyy-MM-dd}' AND value = '{profile.GroupName}'");
 
             if (lessons == null)
-            {
+    {
                 Response response = await parser.GetWeekAsync(profile, date, (profile.EmployeeMode ? profile.EmployeeName : profile.GroupName) ?? "CantUse", default);
                 if (response.Status == (int)RucSu.Services.ScheduleService.Status.Success && response is Response<IList<ILesson>?> lessonsResponse)
                     lessons = lessonsResponse.Data;

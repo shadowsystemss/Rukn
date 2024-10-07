@@ -1,4 +1,5 @@
-﻿using RucSu.Models;
+﻿using RucSu.DB.Models;
+using RucSu.Models;
 using Rukn.Data.Interfaces;
 using Rukn.Data.Models;
 
@@ -16,8 +17,8 @@ public class ScheduleService(HttpClient httpClient)
 
     public async Task<FullResponse<IList<ILesson>?>> GetWeekAsync(Profile profile,
                                                                    DateTime date,
-                                                                   string placeholder,
-                                                                   CancellationToken cancel)
+                                             string placeholder,
+                                             CancellationToken cancel)
     {
         if (!profile.CanUse)
             return new((int)Status.CantUse, "unable to use profile", null, null);

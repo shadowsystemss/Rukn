@@ -1,22 +1,21 @@
 ﻿using Rukn.Data.Interfaces;
-using Rukn.Data.Pretty;
 
 namespace RucSu.Models
 {
-    public record Lesson(DateTime Date,
-                         byte Number,
-                         string Name,
-                         string Employee,
-                         IList<string> Groups,
-                         IList<IPosition> Positions,
-                         DateTime Relevance) : PrettyLesson(Relevance,
-                                                            Date,
-                                                            Number,
-                                                            Name,
-                                                            Employee,
-                                                            Groups,
-                                                            Positions,
-                                                            Times[Number - 1])
+    public class Lesson(DateTime Date,
+                        byte Number,
+                        string Name,
+                        string Employee,
+                        IList<string> Groups,
+                        IList<IPosition> Positions,
+                        DateTime Relevance) : Rukn.Data.Models.Lesson(Relevance,
+                                                                      Date,
+                                                                      Number,
+                                                                      Name,
+                                                                      Employee,
+                                                                      Groups,
+                                                                      Positions,
+                                                                      Times[Number - 1])
     {
         private static readonly (TimeOnly, TimeOnly)[] Times =
         [

@@ -1,9 +1,10 @@
 ﻿using Fuck.Services.Logging;
 using Fuck.ViewModels;
 using Fuck.Views;
+using RucSu.DB.Models;
 using RucSu.Services;
 
-namespace Fuck.Services
+namespace Fuck.Services.RucSu
 {
     public class RucSuPlugin(IServiceProvider services, Profile profile) : IInitService
     {
@@ -12,7 +13,7 @@ namespace Fuck.Services
             .AddSingleton<IInitService, RucSuPlugin>()
             .AddSingleton<Profile>()
             .AddSingleton<Parser>()
-            .AddSingleton<DBContext, DBContextWithLogging>()
+            .AddSingleton<DBContext, LoggingDB>()
             .AddSingleton<LessonBuilder>()
             .AddSingleton<PositionBuilder>()
             .AddSingleton<KeysManager>()

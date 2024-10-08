@@ -1,5 +1,4 @@
 ﻿using RucSu.Models;
-using Rukn.Data.Pretty;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -70,7 +69,7 @@ public static partial class Parser
                         lesson.Groups.Add(group);
                     }
                     else if (newPosition)
-                        lesson.Positions.Add(new PrettyPosition(room, type));
+                        lesson.Positions.Add(new Rukn.Data.Models.Position(room, type));
                     else continue;
 
                     added = true;
@@ -83,7 +82,7 @@ public static partial class Parser
                         name,
                         employee,
                         [group],
-                        [new PrettyPosition(room, type)],
+                        [new Rukn.Data.Models.Position(room, type)],
                         DateTime.Now)
                     );
             }

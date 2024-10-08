@@ -1,35 +1,19 @@
 ﻿using RucSu.DB.DataBases;
+using RucSu.Models;
 using Rukn.Data.Interfaces;
-
 namespace RucSu.DB.Models
 {
-    public class DBLesson(LessonsDB db,
-                          int id,
-                          DateTime date,
-                          byte number,
-                          string name,
-                          string employee,
-                          IList<string> groups,
-                          IList<IPosition> positions,
-                          DateTime relevance) : ILesson
+    public class DBLesson(
+        LessonsDB db,
+        int Id,
+        DateTime Date,
+        byte Number,
+        string Name,
+        string Employee,
+        IList<string> Groups,
+        IList<IPosition> Positions,
+        DateTime Relevance) : Lesson(Date, Number, Name, Employee, Groups, Positions, Relevance)
     {
-        public int Id { get; init; } = id;
-
-        public DateTime Relevance { get; init; } = relevance;
-
-        public DateTime Date { get; init; } = date;
-
-        public byte Number { get; init; } = number;
-
-        public string Name { get; init; } = name;
-
-        public string Employee { get; init; } = employee;
-
-        public IList<string> Groups { get; init; } = groups;
-
-        public IList<IPosition> Positions { get; init; } = positions;
-
-        public (TimeOnly, TimeOnly) Time { get; init; }
 
         public void Delete() => db.DeleteLesson(Id);
     }

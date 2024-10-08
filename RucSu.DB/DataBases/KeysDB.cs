@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS keys_branches;");
     }
 
     public void AddEmployees(string branch, Dictionary<string, string> keys)
-        {
+    {
         var builder = new StringBuilder("INSERT INTO keys_employees(branch,name,value) VALUES ");
         foreach (KeyValuePair<string, string> kv in keys)
             builder.Append($"('{branch}','{kv.Key}','{kv.Value}'),");
@@ -87,10 +87,10 @@ DROP TABLE IF EXISTS keys_branches;");
         builder.Remove(builder.Length - 1, 1);
         builder.Append(@" ON CONFLICT(branch,year,name) DO UPDATE SET value=excluded.value");
         db.Command(builder.ToString());
-        }
+    }
 
     protected static Dictionary<string, string>? ReadKeys(SqliteDataReader reader)
-        {
+    {
         if (!reader.HasRows) return null;
         var keys = new Dictionary<string, string>();
 
@@ -98,7 +98,7 @@ DROP TABLE IF EXISTS keys_branches;");
             keys.Add(reader.GetString(0), reader.GetString(1));
 
         return keys;
-        }
+    }
 
     protected static KeyValuePair<string, string>? ReadKey(SqliteDataReader reader)
     {

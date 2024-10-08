@@ -3,20 +3,20 @@ using Rukn.Data.Models;
 
 namespace Rukn.Data.Pretty
 {
-    public record PrettyLesson(DateTime Relevance,
-        DateTime Date,
-        byte Number,
-        string Name,
-        string Employee,
-        IList<string> Groups,
-        IList<IPosition> Positions,
-        (TimeOnly, TimeOnly) Time) : Lesson(Relevance,
-                                            Date,
-                                            Number,
-                                            Name,
-                                            Employee,
-                                            Groups.ToList().ConvertAll(x => x.Replace("Группа", "")),
-                                            Positions.ToList().ConvertAll(x=>(IPosition)new PrettyPosition(x)),
+    public class PrettyLesson(DateTime relevance,
+        DateTime date,
+        byte number,
+        string name,
+        string employee,
+        IList<string> groups,
+        IList<IPosition> positions,
+        (TimeOnly, TimeOnly) Time) : Lesson(relevance,
+                                            date,
+                                            number,
+                                            name,
+                                            employee,
+                                            groups.ToList().ConvertAll(x=>PrettyGroup(x)),
+                                            positions.ToList().ConvertAll(x => (IPosition)new PrettyPosition(x)),
                                             Time)
     {
         public PrettyLesson(ILesson lesson) : this(lesson.Relevance,
@@ -26,9 +26,12 @@ namespace Rukn.Data.Pretty
                                                    lesson.Employee,
                                                    lesson.Groups,
                                                    lesson.Positions,
-                                                   lesson.Time) { }
+                                                   lesson.Time)
+        { }
 
         public string TimeString => $"{Time.Item1.ToShortTimeString()}—{Time.Item2.ToShortTimeString()}";
+
+        public static string PrettyGroup(string group) => group.Replace("Группа ", "");
 
         public override string ToString()
             => $@"{Number}. {Name}

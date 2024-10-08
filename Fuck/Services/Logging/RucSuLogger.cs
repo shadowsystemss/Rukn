@@ -2,13 +2,13 @@
 
 namespace Fuck.Services.Logging
 {
-    public class RucSuLogger : ILogger
+    internal class RucSuLogger : ILogger
     {
-        private DBContextWithLogging? _db;
+        private LoggingDB? _db;
 
-        public RucSuLogger(DBContext db)
+        public RucSuLogger(LoggingDB db)
         {
-            if (db is DBContextWithLogging logger)
+            if (db is LoggingDB logger)
                 _db = logger;
         }
 

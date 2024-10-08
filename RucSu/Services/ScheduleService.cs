@@ -1,5 +1,4 @@
-﻿using RucSu.DB.Models;
-using RucSu.Models;
+﻿using RucSu.Models;
 using Rukn.Data.Interfaces;
 using Rukn.Data.Models;
 

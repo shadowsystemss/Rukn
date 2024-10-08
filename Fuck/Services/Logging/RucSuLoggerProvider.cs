@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace Fuck.Services.Logging
 {
-    public class RucSuLoggerProvider(DBContext db) : ILoggerProvider
+    class RucSuLoggerProvider(LoggingDB db) : ILoggerProvider
     {
         private readonly ConcurrentDictionary<string, RucSuLogger> _loggers = new(StringComparer.OrdinalIgnoreCase);
         public ILogger CreateLogger(string categoryName)

@@ -17,7 +17,7 @@ namespace Fuck.ViewModels
         [RelayCommand]
         private void Load()
         {
-            if (db is not DBContextWithLogging logsKeeper)
+            if (db is not LoggingDB logsKeeper)
                 return;
 
             Logs = First > Second

@@ -142,6 +142,7 @@ WHERE lessonId = @lessonId");
             string employee = lessonReader.GetString(4);
             DateTime relevance = lessonReader.GetDateTime(5);
 
+            lessonIdParameter.Value = id;
             var positions = new List<IPosition>();
 
             using (SqliteDataReader reader = getPositionsCommand.ExecuteReader())

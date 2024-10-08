@@ -75,7 +75,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\AuthLib\AuthLib.csproj" />
+	  <ProjectReference Include="..\RucSu.DB\RucSu.DB.csproj" />
 	  <ProjectReference Include="..\RucSu\RucSu.csproj" />
+	  <ProjectReference Include="..\Rukn.Data.Pretty\Rukn.Data.Pretty.csproj" />
+	  <ProjectReference Include="..\Rukn.Data\Rukn.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

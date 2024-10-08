@@ -1,5 +1,6 @@
 ﻿using Fuck.Services;
 using Fuck.Services.Logging;
+using Fuck.Services.RucSu;
 using Fuck.ViewModels;
 using Fuck.Views;
 using Microsoft.Extensions.Logging;
